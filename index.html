@@ -1,3 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
-... full content omitted for brevity ...
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poker Town</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e0f0ff;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: background-color 0.4s ease;
+    }
+    header {
+      text-align: center;
+      padding: 1.5rem 1rem 0.5rem 1rem;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.05);
+      padding: 0.5rem;
+    }
+    .tab {
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      margin: 0 0.3rem;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .tab.active {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+    }
+    section {
+      max-width: 800px;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      line-height: 1.6;
+    }
+    h2, h3 {
+      text-align: center;
+    }
+    h3 {
+      margin-top: 1.5rem;
+    }
+    ul, ol {
+      margin: 0.5rem 0 1rem 1.25rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.4rem 0.6rem;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.05);
+      font-size: 0.9rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header id="gameHeader">🏙️ Poker Town</header>
+  <nav>
+    <div class="tab" id="soloTab">Solo mode</div>
+    <div class="tab active" id="twoTab">Two Player</div>
+    <div class="tab" id="threeTab">Three Player</div>
+  </nav>
+
+  <main>
+    <section id="content"></section>
+  </main>
+
+  <footer>™️ and ©️ 2025 David Sparks</footer>
+
+  <script>
+    const header = document.getElementById('gameHeader');
+    const content = document.getElementById('content');
+    const soloTab = document.getElementById('soloTab');
+    const twoTab = document.getElementById('twoTab');
+    const threeTab = document.getElementById('threeTab');
+    const tabs = [soloTab, twoTab, threeTab];
+
+    const gameData = {
+      solo: {
+        title: 'Poker Farm',
+        emoji: '🌾',
+        color: '#fff3b0',
+        html: `
+          <h2>Poker Farm — Solo Variant</h2>
+          <h3>Overview</h3>
+          <p>In <strong>Poker Farm</strong>, you work the fields alone, building a 5×5 grid of cards by carefully drafting pairs from a rotating supply. Each card shapes multiple poker hands at once — rows, columns, and diagonals — and your challenge is to plant wisely, anticipating how each new card will strengthen or weaken your future harvest.</p>
+
+          <h3>Setup</h3>
+          <ol>
+            <li>Shuffle a standard 52-card deck.</li>
+            <li>Reveal two cards face up beside the deck. These are discarded for the game but remain visible.</li>
+            <li>Leave space in front of you for your 5×5 grid and a face-up discard pile.</li>
+          </ol>
+
+          <h3>Gameplay</h3>
+          <p>The game proceeds over 25 placements, with each round following this pattern:</p>
+          <ol>
+            <li>Reveal three cards face up from the deck.</li>
+            <li>Discard the top card of the deck face up into a shared discard pile.</li>
+            <li>Choose two of the three revealed cards to place into your grid.</li>
+            <li>Discard the unchosen card face up beside the deck.</li>
+          </ol>
+          <p>Continue this process until only two cards remain in the deck. Reveal both, choose one as your final (25th) placement, and discard the other.</p>
+
+          <h3>Building Your Grid</h3>
+          <p>Each new card must be placed adjacent (orthogonally or diagonally) to an existing card. Once placed, cards may not be moved. Your final layout must form a complete 5×5 grid. The tension comes from balancing strong individual lines against overall grid structure.</p>
+
+          <h3>Scoring</h3>
+          <p>When your farm is full, score each of your twelve poker lines: five rows, five columns, and two diagonals. Use the scoring table below to determine the value of each hand, then total your points to measure your harvest’s quality.</p>
+          <table>
+            <tr><th>Points</th><th>Hand</th></tr>
+            <tr><td>55</td><td>Royal Flush</td></tr>
+            <tr><td>34</td><td>Straight Flush</td></tr>
+            <tr><td>21</td><td>Four of a Kind</td></tr>
+            <tr><td>13</td><td>Full House</td></tr>
+            <tr><td>8</td><td>Flush</td></tr>
+            <tr><td>5</td><td>Straight</td></tr>
+            <tr><td>3</td><td>Three of a Kind</td></tr>
+            <tr><td>2</td><td>Two Pair</td></tr>
+            <tr><td>1</td><td>One Pair</td></tr>
+            <tr><td>0</td><td>High Card</td></tr>
+          </table>
+          <p>The theoretical maximum score is 359 points — an unlikely but satisfying harvest. Keep your best score and try to beat it in future games.</p>
+        `
+      },
+      two: {
+        title: 'Poker Town',
+        emoji: '🏙️',
+        color: '#e0f0ff',
+        html: `
+          <h2>Poker Town — Two Player Game</h2>
+          <p><strong>Poker Town</strong> is a tactical game of drafting and intersecting poker hands for two players. Each player builds their own 5×5 “town” of overlapping poker lines, placing cards that strengthen several streets at once. When the final card is placed, players compare their completed towns head-to-head to determine who becomes the mayor of Poker Town.</p>
+
+          <h3>Setup</h3>
+          <ol>
+            <li>Shuffle the 52-card deck.</li>
+            <li>Reveal two cards face up beside the deck; these stay visible but unused.</li>
+            <li>Randomly choose a first player.</li>
+          </ol>
+
+          <h3>Gameplay</h3>
+          <p>The game is played over 13 rounds. Each round consists of drafting and placement:</p>
+          <ol>
+            <li>Deal four cards face up. (If fewer than four remain, deal what’s left — this happens only in the final round.)</li>
+            <li>Players draft in snake order: the first player takes one, the second takes two, and the first takes the last.</li>
+            <li>Each drafted card must be placed immediately into your layout, adjacent to at least one existing card. Cards cannot be moved later.</li>
+            <li>After each round, switch who drafts first.</li>
+          </ol>
+          <p>After 13 rounds (the final round having only two cards), both players will have completed 5×5 grids (25 cards each).</p>
+
+          <h3>Scoring</h3>
+          <p>Each player’s grid contains twelve poker lines — five rows, five columns, and two diagonals (NW–SE and SW–NE). For each corresponding line, compare hands using standard poker rankings:</p>
+          <ul>
+            <li>Royal Flush</li>
+            <li>Straight Flush</li>
+            <li>Four of a Kind</li>
+            <li>Full House</li>
+            <li>Flush</li>
+            <li>Straight</li>
+            <li>Three of a Kind</li>
+            <li>Two Pair</li>
+            <li>One Pair</li>
+            <li>High Card</li>
+          </ul>
+          <p>The stronger hand earns one point for that line; ties score nothing. The player with the most points out of 12 wins. If still tied, the player with the single strongest hand anywhere in their grid wins.</p>
+        `
+      },
+      three: {
+        title: 'Poker Park',
+        emoji: '🌳',
+        color: '#d6f5d6',
+        html: `
+          <h2>Poker Park — Three Player Game</h2>
+          <p><strong>Poker Park</strong> is a three-player variant where each player builds a lattice of intersecting streets and paths — two rows and two columns that cross, forming a compact 16-card park. Every placement contributes to multiple scoring lines at once, so positioning is everything.</p>
+
+          <h3>Setup</h3>
+          <ol>
+            <li>Shuffle the deck.</li>
+            <li>Reveal four cards face up beside the deck; these are unused.</li>
+            <li>Randomly choose a first player.</li>
+          </ol>
+
+          <h3>Gameplay</h3>
+          <p>The game is played over 8 rounds. Each round, six cards are revealed and drafted in snake order:</p>
+          <ol>
+            <li>Deal six cards face up.</li>
+            <li>Player order: 1 → 2 → 3 → 3 → 2 → 1. Each player drafts two cards per round.</li>
+            <li>Place each card adjacent to at least one existing card; cards cannot be moved later.</li>
+            <li>Your final layout must form two crossing rows and two crossing columns, for 16 total cards.</li>
+            <li>Rotate first player clockwise each round.</li>
+          </ol>
+
+          <h3>Scoring</h3>
+          <p>Each player scores their four poker lines — two rows and two columns. For each line, all players compare hands:</p>
+          <ul>
+            <li>Best hand scores 1 point.</li>
+            <li>If two tie for best, both score 1.</li>
+            <li>If all three tie, no points are awarded.</li>
+          </ul>
+          <p>The player with the most points out of 4 wins. If still tied, the single strongest hand anywhere in their park breaks the tie.</p>
+          <pre style="font-family: monospace; background:#f8fff8; padding:0.5rem; border-radius:0.4rem;">
+XXXXX          XXXXX           X X               X
+X   X          XXXXX          XXXXX              X
+X   X          XX              X X             XXXXX
+X   X          XX             XXXXX            X X
+XXXXX          XX              X X           XXXXX
+                                              X 
+Some of the many reasonable lattices          X
+          </pre>
+        `
+      }
+    };
+
+    function selectTab(tab) {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      if (tab === soloTab) {
+        document.body.style.backgroundColor = gameData.solo.color;
+        header.textContent = `${gameData.solo.emoji} ${gameData.solo.title}`;
+        content.innerHTML = gameData.solo.html;
+      } else if (tab === twoTab) {
+        document.body.style.backgroundColor = gameData.two.color;
+        header.textContent = `${gameData.two.emoji} ${gameData.two.title}`;
+        content.innerHTML = gameData.two.html;
+      } else if (tab === threeTab) {
+        document.body.style.backgroundColor = gameData.three.color;
+        header.textContent = `${gameData.three.emoji} ${gameData.three.title}`;
+        content.innerHTML = gameData.three.html;
+      }
+    }
+
+    selectTab(twoTab);
+    soloTab.addEventListener('click', () => selectTab(soloTab));
+    twoTab.addEventListener('click', () => selectTab(twoTab));
+    threeTab.addEventListener('click', () => selectTab(threeTab));
+  </script>
+</body>
+</html>
