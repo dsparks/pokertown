@@ -112,13 +112,12 @@
         color: '#fff3b0',
         html: `
           <h2>Poker Farm — Solo Variant</h2>
-          <h3>Overview</h3>
-          <p>In <strong>Poker Farm</strong>, you work the fields alone, building a 5×5 grid of cards by carefully drafting pairs from a rotating supply. Each card shapes multiple poker hands at once — rows, columns, and diagonals — and your challenge is to plant wisely, anticipating how each new card will strengthen or weaken your future harvest.</p>
+          <p>In <strong>Poker Farm</strong>, you plant your fields alone, building a 5×5 grid of cards by carefully drafting pairs from a rotating supply. Each card shapes multiple poker hands at once — rows, columns, and diagonals — and your challenge is to plant wisely, anticipating how each new card will strengthen or weaken your future harvest.</p>
 
           <h3>Setup</h3>
           <ol>
             <li>Shuffle a standard 52-card deck.</li>
-            <li>Reveal two cards face up beside the deck. These are discarded for the game but remain visible.</li>
+            <li>Set aside two cards face up; these stay visible but unused.</li>
             <li>Leave space in front of you for your 5×5 grid and a face-up discard pile.</li>
           </ol>
 
@@ -126,14 +125,12 @@
           <p>The game proceeds over 25 placements, with each round following this pattern:</p>
           <ol>
             <li>Reveal three cards face up from the deck.</li>
-            <li>Discard the top card of the deck face up into a shared discard pile.</li>
-            <li>Choose two of the three revealed cards to place into your grid.</li>
-            <li>Discard the unchosen card face up beside the deck.</li>
+            <li>Discard a fourth card from the top card of the deck face up into the discard pile.</li>
+            <li>Choose two of the three revealed cards, one at a time, to place into your grid.</li>
+            <li>Each drafted card must be placed immediately into your layout, adjacent (orthogonally or diagonally) to at least one existing card. Cards cannot be moved later.</li>
+            <li>Discard the unchosen card face up.</li>
           </ol>
-          <p>Continue this process until only two cards remain in the deck. Reveal both, choose one as your final (25th) placement, and discard the other.</p>
-
-          <h3>Building Your Grid</h3>
-          <p>Each new card must be placed adjacent (orthogonally or diagonally) to an existing card. Once placed, cards may not be moved. Your final layout must form a complete 5×5 grid. The tension comes from balancing strong individual lines against overall grid structure.</p>
+          <p>Continue this process until only two cards remain in the deck. Reveal both, choose one as your final (25th) placement, and discard the other. As you build your grid, your farm can expand in any way you choose, but you do need to end up with an exact 5×5 grid.</p>
 
           <h3>Scoring</h3>
           <p>When your farm is full, score each of your twelve poker lines: five rows, five columns, and two diagonals. Use the scoring table below to determine the value of each hand, then total your points to measure your harvest’s quality.</p>
@@ -150,7 +147,7 @@
             <tr><td>1</td><td>One Pair</td></tr>
             <tr><td>0</td><td>High Card</td></tr>
           </table>
-          <p>The theoretical maximum score is 359 points — an unlikely but satisfying harvest. Keep your best score and try to beat it in future games.</p>
+          <p>The theoretical maximum score is 359 points — an unlikely but satisfying harvest. Note your score and try to beat it in future games.</p>
         `
       },
       two: {
@@ -163,23 +160,23 @@
 
           <h3>Setup</h3>
           <ol>
-            <li>Shuffle the 52-card deck.</li>
-            <li>Reveal two cards face up beside the deck; these stay visible but unused.</li>
+            <li>Shuffle a standard 52-card deck.</li>
+            <li>Set aside two cards face up; these stay visible but unused.</li>
             <li>Randomly choose a first player.</li>
           </ol>
 
           <h3>Gameplay</h3>
           <p>The game is played over 13 rounds. Each round consists of drafting and placement:</p>
           <ol>
-            <li>Deal four cards face up. (If fewer than four remain, deal what’s left — this happens only in the final round.)</li>
+            <li>Deal four cards face up. (In the final round, you will only deal the final two cards.)</li>
             <li>Players draft in snake order: the first player takes one, the second takes two, and the first takes the last.</li>
             <li>Each drafted card must be placed immediately into your layout, adjacent to at least one existing card. Cards cannot be moved later.</li>
             <li>After each round, switch who drafts first.</li>
           </ol>
-          <p>After 13 rounds (the final round having only two cards), both players will have completed 5×5 grids (25 cards each).</p>
+          <p>After 13 rounds (the final round having only two cards), both players will have completed 5×5 grids (25 cards each). As you build your grid, your town can expand in any way you choose, but you do need to end up with an exact 5×5 grid.</p>
 
           <h3>Scoring</h3>
-          <p>Each player’s grid contains twelve poker lines — five rows, five columns, and two diagonals (NW–SE and SW–NE). For each corresponding line, compare hands using standard poker rankings:</p>
+          <p>Each player’s grid contains twelve poker lines — five rows, five columns, and two diagonals (NW–SE and SW–NE). Players compare lines/hands head to head, going column by column, row by row, and finishing with the two diagonals. For each corresponding line, compare hands using standard poker rankings:</p>
           <ul>
             <li>Royal Flush</li>
             <li>Straight Flush</li>
@@ -201,12 +198,12 @@
         color: '#d6f5d6',
         html: `
           <h2>Poker Park — Three Player Game</h2>
-          <p><strong>Poker Park</strong> is a three-player variant where each player builds a lattice of intersecting streets and paths — two rows and two columns that cross, forming a compact 16-card park. Every placement contributes to multiple scoring lines at once, so positioning is everything.</p>
+          <p><strong>Poker Park</strong> is a three-player variant where each player builds a lattice of intersecting paths — two rows and two columns that cross, forming a compact 16-card park. Every placement can contribute to multiple scoring lines at once, so positioning is everything.</p>
 
           <h3>Setup</h3>
           <ol>
-            <li>Shuffle the deck.</li>
-            <li>Reveal four cards face up beside the deck; these are unused.</li>
+            <li>Shuffle a standard 52-card deck.</li>
+            <li>Set aside four cards face up; these stay visible but unused.</li>
             <li>Randomly choose a first player.</li>
           </ol>
 
@@ -214,21 +211,15 @@
           <p>The game is played over 8 rounds. Each round, six cards are revealed and drafted in snake order:</p>
           <ol>
             <li>Deal six cards face up.</li>
-            <li>Player order: 1 → 2 → 3 → 3 → 2 → 1. Each player drafts two cards per round.</li>
-            <li>Place each card adjacent to at least one existing card; cards cannot be moved later.</li>
-            <li>Your final layout must form two crossing rows and two crossing columns, for 16 total cards.</li>
+            <li>Players draft two cards per round, in snake order: 1 → 2 → 3 → 3 → 2 → 1.</li>
+            <li>Place each card adjacent (orthogonally or diagonally) to at least one existing card; cards cannot be moved later.</li>
+            <li>Your final layout must form two crossing two crossing columns, for 16 total cards. Both rows must intersect both columns.</li>
             <li>Rotate first player clockwise each round.</li>
           </ol>
 
-          <h3>Scoring</h3>
-          <p>Each player scores their four poker lines — two rows and two columns. For each line, all players compare hands:</p>
-          <ul>
-            <li>Best hand scores 1 point.</li>
-            <li>If two tie for best, both score 1.</li>
-            <li>If all three tie, no points are awarded.</li>
-          </ul>
-          <p>The player with the most points out of 4 wins. If still tied, the single strongest hand anywhere in their park breaks the tie.</p>
-          <pre style="font-family: monospace; background:#f8fff8; padding:0.5rem; border-radius:0.4rem;">
+          <h3>Layouts</h3>
+          <p>Parks can take many different forms; the only requirements are that all four paths must have five cards, and each row intersects with each column.</p>
+<pre style="font-family: monospace; background:#f8fff8; padding:0.5rem; border-radius:0.4rem;">
 XXXXX          XXXXX           X X               X
 X   X          XXXXX          XXXXX              X
 X   X          XX              X X             XXXXX
@@ -237,6 +228,15 @@ XXXXX          XX              X X           XXXXX
                                               X 
 Some of the many reasonable lattices          X
           </pre>
+
+          <h3>Scoring</h3>
+          <p>Players compare paths/hands head to head; comparing top rows, bottom rows, left columns, right columns. For each corresponding line, compare hands using standard poker rankings:</p>
+          <ul>
+            <li>The player with the best hand scores 1 point.</li>
+            <li>If two tie for best, both score 1.</li>
+            <li>If all three tie, no points are awarded.</li>
+          </ul>
+          <p>The player with the most points out of 4 wins. If still tied, the single strongest hand anywhere in their park breaks the tie.</p>
         `
       }
     };
